@@ -5,6 +5,7 @@ bitbucket-oauth
 build-name-setter
 build-pipeline-plugin
 build-publisher
+codedeploy
 description-setter
 ec2-fleet
 embeddable-build-status

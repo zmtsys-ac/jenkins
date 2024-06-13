@@ -17,12 +17,9 @@ RUN apt-get update -y \
     git \
     docker.io \
     gnupg2 \
-    python3-pip \
-    python3-setuptools \
     software-properties-common \
     sudo \
     tzdata \
-  && pip3 install -U --no-cache-dir awscli \
   && usermod -aG docker jenkins \
   && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
   && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone

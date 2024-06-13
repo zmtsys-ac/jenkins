@@ -22,7 +22,7 @@ RUN apt-get update -y \
     software-properties-common \
     sudo \
     tzdata \
-  && pip3 install -U --system --no-cache-dir awscli \
+  && pip3 install -U --no-cache-dir awscli \
   && usermod -aG docker jenkins \
   && echo "jenkins ALL=NOPASSWD: ALL" >> /etc/sudoers \
   && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone

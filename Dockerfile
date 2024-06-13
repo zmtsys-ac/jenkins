@@ -1,7 +1,7 @@
 FROM jenkins/jenkins:lts-jdk11
 LABEL org.opencontainers.image.description="Jenkins LTS image with pre-installed plugins" \
   "com.zmtsys.vendor"="Zimi Tech, Inc." \
-  "com.zmtsys.image.author"="patrick.susbilla@zmtsys.com"
+  "com.zmtsys.image.author"="web.zimitech@gmail.com"
 
 USER root
 ENV TZ=Asia/Manila
@@ -30,7 +30,7 @@ RUN apt-get update -y \
 COPY ./ssh_config /etc/ssh/ssh_config
 COPY ./plugins.txt /plugins.txt
 
-RUN jenkins-plugin-cli --latest true -f /plugins.txt \
+RUN jenkins-plugin-cli --verbose true -f /plugins.txt \
   && sed -i "s|exec \"\$@\"||g" /usr/local/bin/jenkins.sh \
   ; echo "cp -r /src/.ssh /src/.aws /var/jenkins_home\nchmod 600 /var/jenkins_home/.ssh/id_rsa*\nssh-keygen -f /var/jenkins_home/.ssh/id_rsa -y > /var/jenkins_home/.ssh/id_rsa.pub\ngit config --global user.name \"Jenkins Master\"\ngit config --global user.email jenkins@zmtsys.com\nexec \"\$@\";" >> /usr/local/bin/jenkins.sh
 
